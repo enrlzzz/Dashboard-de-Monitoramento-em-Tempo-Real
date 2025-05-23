@@ -1,0 +1,157 @@
+/* Container do card de mapa */
+.weather-map {
+    grid-column: span 2;
+  }
+  
+  /* Header do card */
+  .card-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  /* Descrição abaixo do título */
+  .card-description {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+  }
+  
+  /* Conteúdo do card */
+  .card-content {
+    padding: 1rem;
+  }
+  
+  /* Tabs */
+  .tabs {
+    margin-bottom: 1rem;
+  }
+  
+  .tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  
+  .map-tabs {
+    flex-wrap: wrap;
+  }
+  
+  /* Botões de aba */
+  .tab-button {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: color 0.2s, border-color 0.2s;
+    color: #64748b;
+  }
+  
+  .tab-button:hover {
+    color: var(--foreground);
+  }
+  
+  .tab-button.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 500;
+  }
+  
+  /* Conteúdo de cada aba */
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  /* Placeholder do mapa */
+  .map-placeholder {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: var(--radius);
+  }
+  
+  .map-placeholder svg {
+    margin-bottom: 1rem;
+    color: #94a3b8;
+  }
+  
+  .map-placeholder h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .map-placeholder p {
+    font-size: 0.875rem;
+  }
+  
+  /* Legenda do mapa */
+  .map-legend {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Itens da legenda */
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+  
+  .legend-color {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+  }
+  
+  .tab-content {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  .btn-voltar {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0 #000;
+  }
+  
+  .btn-voltar:hover {
+    background-color: #000;
+    color: #fff;
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+  
+  

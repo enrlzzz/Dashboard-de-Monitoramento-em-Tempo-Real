@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qualidade do Ar | BreathFree</title>
+  <link rel="stylesheet" href="qualidade.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>BreathFree</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html">Visão Geral</a></li>
+        <li><a href="PrecipitacaoTemp.html">Temperatura</a></li>
+        <li><a href="umidade.html">Umidade</a></li>
+        <li><a href="vento.html">Vento</a></li>
+        <li><a href="qualidade.html">Qualidade do Ar</a></li>
+        <li><a href="MapaClimático.html">Mapa Climático</a></li>
+        <li><a href="Configurações.html">Configurações</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main">
+    <header>
+      <h1>Qualidade do Ar</h1>
+      <p>Últimas medições dos principais poluentes</p>
+    </header>
+
+    <section class="painel">
+      <div class="info-card">
+        <h3>Índice AQI</h3>
+        <p>62 - Moderado</p>
+      </div>
+      <div class="info-card">
+        <h3>PM2.5</h3>
+        <p>28 µg/m³</p>
+      </div>
+      <div class="info-card">
+        <h3>PM10</h3>
+        <p>54 µg/m³</p>
+      </div>
+      <div class="info-card">
+        <h3>Ozônio (O₃)</h3>
+        <p>80 ppb</p>
+      </div>
+      <div class="info-card">
+        <h3>Monóxido de Carbono (CO)</h3>
+        <p>0.7 ppm</p>
+      </div>
+    </section>
+
+    <section class="grafico">
+      <canvas id="aqiChart"></canvas>
+    </section>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('aqiChart').getContext('2d');
+    const aqiChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['PM2.5', 'PM10', 'O₃', 'CO'],
+        datasets: [{
+          label: 'Níveis de Poluentes',
+          data: [28, 54, 80, 0.7],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Concentração'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Poluentes'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

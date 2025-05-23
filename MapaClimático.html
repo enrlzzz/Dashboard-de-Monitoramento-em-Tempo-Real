@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Climático</title>
+    <link rel="stylesheet" href="MapaClimatico.css">
+</head>
+<body>
+    
+    <a href="index.html" class="btn-voltar" title="Voltar ao Início">
+        ← Voltar
+      </a>
+      
+
+    <!-- Weather Map -->
+<div class="card chart-card weather-map">
+    <div class="card-header">
+      <div>
+        <h3 class="card-title">Mapa Climático</h3>
+        <p class="card-description">Visualização geográfica de dados climáticos</p>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="tabs">
+        <div class="tabs-header map-tabs">
+          <button class="tab-button active" data-tab="temp-map">Temperatura</button>
+          <button class="tab-button" data-tab="precip-map">Precipitação</button>
+          <button class="tab-button" data-tab="humidity-map">Umidade</button>
+          <button class="tab-button" data-tab="wind-map">Vento</button>
+          <button class="tab-button" data-tab="air-map">Qualidade do Ar</button>
+        </div>
+      </div>
+      <div class="tab-content active" id="temp-map">
+        <div class="map-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+          </svg>
+          <h3>Mapa de Temperatura</h3>
+          <p>Visualização de temperatura por região</p>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-color" style="background-color: #3b82f6;"></span>
+            <span class="legend-label">Frio</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background-color: #22c55e;"></span>
+            <span class="legend-label">Ameno</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background-color: #facc15;"></span>
+            <span class="legend-label">Quente</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background-color: #ef4444;"></span>
+            <span class="legend-label">Muito Quente</span>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="precip-map">
+        <div class="placeholder-content">Mapa de precipitação será carregado aqui</div>
+      </div>
+      <div class="tab-content" id="humidity-map">
+        <div class="placeholder-content">Mapa de umidade será carregado aqui</div>
+      </div>
+      <div class="tab-content" id="wind-map">
+        <div class="placeholder-content">Mapa de velocidade do vento será carregado aqui</div>
+      </div>
+      <div class="tab-content" id="air-map">
+        <div class="placeholder-content">Mapa de qualidade do ar será carregado aqui</div>
+      </div>
+    </div>
+  </div>
+  
+
+</body>
+</html>

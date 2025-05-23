@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Climático</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>BreathFree</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html">Visão Geral</a></li>
+        <li><a href="PrecipitacaoTemp.html">Temperatura</a></li>
+        <li><a href="umidade.html">Umidade</a></li>
+        <li><a href="vento.html">Vento</a></li>
+        <li><a href="qualidade.html">Qualidade do Ar</a></li>
+        <li><a href="MapaClimático.html">Mapa Climático</a></li>
+        <li><a href="Configurações.html">Configurações</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <button id="login-btn" class="login-btn">Login</button>
+    <button onclick="removeToken()" id="logout-btn" style="display: none;" class="login-btn">Logout</button>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Dashboard de Monitoramento Climático</h1>
+      <p>Visualize dados em tempo real para decisões estratégicas</p>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Temperatura</h3>
+        <canvas id="tempChart"></canvas>
+      </div>
+      <div class="card">
+        <h3>Precipitação</h3>
+        <canvas id="rainChart"></canvas>
+      </div>
+      <div class="card">
+        <h3>Umidade</h3>
+        <canvas id="humidityChart"></canvas>
+      </div>
+      <div class="card">
+        <h3>Velocidade do Vento</h3>
+        <canvas id="windChart"></canvas>
+      </div>
+      <div class="card">
+        <h3>Qualidade do Ar</h3>
+        <canvas id="airChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Mapa e Alertas -->
+    <section class="alertas-grid">
+      <!-- MAPA -->
+      <div class="mapa-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117312.80706441373!2d-47.54227203281251!3d-23.5015618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58a23393a66c5%3A0x16f71640e7c9dc3d!2sSorocaba%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1716052710301!5m2!1spt-BR!2sbr" 
+          width="100%" 
+          height="100%" 
+          style="border:0;"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <!-- ALERTAS -->
+      <div class="alertas">
+        <h2>Alertas Climáticos</h2>
+        <p class="descricao">Alertas e avisos meteorológicos ativos</p>
+
+        <div class="alert-card moderado">
+          <h3>Alerta de Chuva Forte <span class="nivel">Moderado</span></h3>
+          <p>Previsão de chuvas intensas nas próximas 6 horas. Possibilidade de alagamentos em áreas urbanas.</p>
+          <p><strong>Emitido:</strong> 10:30 - <strong>Válido até:</strong> 16:30</p>
+        </div>
+
+        <div class="alert-card severo">
+          <h3>Alerta de Temperatura Elevada <span class="nivel">Severo</span></h3>
+          <p>Temperatura acima de 35°C prevista para os próximos 3 dias. Recomenda-se hidratação constante.</p>
+          <p><strong>Emitido:</strong> 08:15 - <strong>Válido até:</strong> 20:00 (3 dias)</p>
+        </div>
+
+        <div class="alert-card informativo">
+          <h3>Aviso de Umidade Baixa <span class="nivel">Informativo</span></h3>
+          <p>Umidade relativa do ar abaixo de 30% durante a tarde. Recomenda-se evitar atividades físicas intensas.</p>
+          <p><strong>Emitido:</strong> 09:45 - <strong>Válido até:</strong> 18:00</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Facens | Desenvolvido por BreathFree</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

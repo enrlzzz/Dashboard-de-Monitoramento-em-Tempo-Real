@@ -1,0 +1,26 @@
+body {
+    color: wheat;
+    background-color: rgb(0, 0, 0);
+}
+
+.btn-voltar {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0 #000;
+  }
+  
+  .btn-voltar:hover {
+    background-color: #000;
+    color: #fff;
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+  

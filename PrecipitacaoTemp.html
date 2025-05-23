@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="PrecipitacaoTemp.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clima Atual</title>
+  <style>
+    
+    /* Fundo com a imagem borrada */
+    .background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    /* Conteúdo da página, sem blur */
+    .content-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px;
+      z-index: 1;
+      color: #2e4d25;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #a2cfa5;
+      margin-bottom: 20px;
+      width: 80%;
+      max-width: 300px;
+      outline-color: #66bb6a;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #66bb6a;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    button:hover {
+      background-color: #4caf50;
+    }
+
+    .weather-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      color: #2e4d25;
+      display: none;
+    }
+
+    .weather-box img {
+      width: 100px;
+      margin: 10px auto;
+    }
+
+    .temp {
+      font-size: 2em;
+      margin: 10px 0;
+      color: #3a6b28;
+    }
+
+    .description {
+      font-style: italic;
+      color: #557a3d;
+    }
+  </style>
+</head>
+<body>
+  
+  <a href="index.html" class="btn-voltar" title="Voltar ao Início">
+    ← Voltar
+  </a>
+
+  <div class="background"></div>
+  <div class="content-wrapper">
+    <h1>Clima Atual</h1>
+    <input type="text" id="cityInput" placeholder="Digite o nome da cidade" />
+    <button onclick="getWeather()">Buscar</button>
+
+    <div class="weather-box" id="weatherBox">
+      <h2 id="cityName"></h2>
+      <img id="weatherIcon" src="https://cdn-icons-png.flaticon.com/512/414/414825.png" alt="Ícone do clima" />
+      <div class="temp" id="temperature"></div>
+      <div id="precipitation"></div>
+      <div class="description" id="description"></div>
+    </div>
+  </div>
+
+  <script>
+    async function getWeather() {
+      const apiKey = "56a0733ce16e8bbb931f9940c190ad8b";
+      const city = document.getElementById("cityInput").value.trim();
+      if (!city) {
+        alert("Por favor, digite o nome da cidade!");
+        return;
+      }
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&lang=pt_br&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.cod !== 200) {
+          alert("Cidade não encontrada!");
+          return;
+        }
+
+        document.getElementById("weatherBox").style.display = "block";
+        document.getElementById("cityName").textContent = data.name;
+        document.getElementById("temperature").textContent = `${data.main.temp.toFixed(1)} °C`;
+        document.getElementById("description").textContent = data.weather[0].description;
+
+        document.getElementById("weatherIcon").src = "https://cdn-icons-png.flaticon.com/512/414/414825.png";
+
+        const precipitation = data.rain?.["1h"]
+          ? `Precipitação: ${data.rain["1h"]} mm/h`
+          : "Sem precipitação no momento.";
+        document.getElementById("precipitation").textContent = precipitation;
+      } catch (error) {
+        alert("Erro ao buscar dados do clima. Tente novamente.");
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>

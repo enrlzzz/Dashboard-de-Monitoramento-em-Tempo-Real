@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umidade | BreathFree</title>
+  <link rel="stylesheet" href="umidade.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>BreathFree</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html">Visão Geral</a></li>
+        <li><a href="PrecipitacaoTemp.html">Temperatura</a></li>
+        <li><a href="umidade.html">Umidade</a></li>
+        <li><a href="vento.html">Vento</a></li>
+        <li><a href="qualidade.html">Qualidade do Ar</a></li>
+        <li><a href="MapaClimático.html">Mapa Climático</a></li>
+        <li><a href="Configurações.html">Configurações</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="main">
+    <header>
+      <h1>Umidade</h1>
+      <p>Níveis de umidade registrados ao longo do dia</p>
+    </header>
+
+    <section class="painel">
+      <div class="info-card">
+        <h3>Umidade Atual</h3>
+        <p>78%</p>
+      </div>
+      <div class="info-card">
+        <h3>Máxima do Dia</h3>
+        <p>84%</p>
+      </div>
+      <div class="info-card">
+        <h3>Mínima do Dia</h3>
+        <p>62%</p>
+      </div>
+    </section>
+
+    <section class="grafico">
+      <canvas id="umidadeChart"></canvas>
+    </section>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('umidadeChart').getContext('2d');
+    const umidadeChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['00h', '04h', '08h', '12h', '16h', '20h', '23h'],
+        datasets: [{
+          label: 'Umidade (%)',
+          data: [80, 75, 70, 78, 82, 79, 77],
+          fill: true,
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Umidade (%)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Horário'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

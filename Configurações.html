@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurações</title>
+  <link rel="stylesheet" href="Configurações.css">
+</head>
+<body>
+
+  <h1 id="titulo">Configurações</h1>
+
+  <div class="container">
+    <!-- Informações da Conta -->
+    <div class="section">
+      <h2 id="tituloConta">Informações da Conta</h2>
+      <div class="info-item"><span class="info-label" id="labelNome">Nome:</span> Ana Costa</div>
+      <div class="info-item"><span class="info-label" id="labelEmail">E-mail:</span> ana.costa@exemplo.com</div>
+      <div class="info-item"><span class="info-label" id="labelCargo">Cargo:</span> Analista Ambiental</div>
+    </div>
+
+    <!-- Idioma -->
+    <div class="section">
+      <h2 id="tituloIdioma">Idioma da Dashboard</h2>
+      <div class="lang-buttons">
+        <button class="btn" onclick="trocarIdioma('pt')">Português</button>
+        <button class="btn" onclick="trocarIdioma('en')">English</button>
+        <button class="btn" onclick="trocarIdioma('es')">Español</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão Voltar -->
+  <a href="index.html" class="btn btn-voltar">← Voltar ao Início</a>
+
+  <script>
+    const traducoes = {
+      pt: {
+        titulo: "Configurações",
+        tituloConta: "Informações da Conta",
+        tituloIdioma: "Idioma da Dashboard",
+        labelNome: "Nome:",
+        labelEmail: "E-mail:",
+        labelCargo: "Cargo:",
+      },
+      en: {
+        titulo: "Settings",
+        tituloConta: "Account Information",
+        tituloIdioma: "Dashboard Language",
+        labelNome: "Name:",
+        labelEmail: "Email:",
+        labelCargo: "Role:",
+      },
+      es: {
+        titulo: "Configuraciones",
+        tituloConta: "Información de la Cuenta",
+        tituloIdioma: "Idioma del Panel",
+        labelNome: "Nombre:",
+        labelEmail: "Correo:",
+        labelCargo: "Cargo:",
+      }
+    };
+
+    function trocarIdioma(idioma) {
+      const t = traducoes[idioma];
+      document.getElementById('titulo').textContent = t.titulo;
+      document.getElementById('tituloConta').textContent = t.tituloConta;
+      document.getElementById('tituloIdioma').textContent = t.tituloIdioma;
+      document.getElementById('labelNome').textContent = t.labelNome;
+      document.getElementById('labelEmail').textContent = t.labelEmail;
+      document.getElementById('labelCargo').textContent = t.labelCargo;
+    }
+  </script>
+
+</body>
+</html>
